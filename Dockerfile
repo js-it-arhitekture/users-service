@@ -1,19 +1,19 @@
-# Uporabljamo Java 11 kot osnovno sliko
-FROM adoptopenjdk/openjdk11:alpine-jre
-
-# Nastavimo delovni imenik v notranjosti Docker kontejnerja
-WORKDIR /app
+# Start with a base image containing Java runtime (e.g., OpenJDK 17)
+FROM openjdk:17
 
 
-# The application's jar file
-COPY /out/artifacts/nakup_vstopnic_main_jar/nakup_vstopnic.main.jar app.jar
+# Add a volume pointing to /tmp
+VOLUME /tmp
 
-# Nastavimo splošne argumente za Spring Boot aplikacijo
-# ARG SPRING_PROFILES_ACTIVE=production
-# ARG SERVER_PORT=8080
-
-# Definiramo, kateri port bo naša aplikacija uporabljala
+# Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# Zagon Spring Boot aplikacije
-CMD ["java", "-jar", "app.jar"]
+# The application's jar file
+ARG JAR_FILE=build/libs/nakup_vstopnic-0.0.1-SNAPSHOT.jar
+
+
+# Add the application's jar to the container
+ADD ${JAR_FILE} nakup_vstopnic-service.jar
+
+# Run the jar file
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/nakup_vstopnic-service.jar"]

@@ -4,6 +4,7 @@ import com.example.nakup_vstopnic.controller.UserController;
 import com.example.nakup_vstopnic.model.User;
 import com.example.nakup_vstopnic.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -27,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @SpringBootTest
+@TestPropertySource(properties = "spring.data.mongodb.uri=mongodb://jan:geslo@localhost:27018/vaje?authSource=admin")
 class NakupVstopnicApplicationTests {
 
     @Mock
@@ -128,6 +131,9 @@ class NakupVstopnicApplicationTests {
 
     @Test
     void status() {
+
+
+
         ResponseEntity<String> response = userController.status();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());

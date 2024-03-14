@@ -1,4 +1,33 @@
+# Gradle files
+.gradle/
+build/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Spring Boot properties file
+application.properties
+
+# Logs
+*.log
+
+# Compiled bytecode
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Dependency directories
+bin/
+target/
+
+
 .env
-.gradle
-.idea
-/build
