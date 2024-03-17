@@ -1,7 +1,7 @@
 # Users Service
 
 ## Overview
-This is the Users service, built with Spring Boot and Gradle. It provides functionalities related to user management.
+This is the Users service, built with Spring Boot and Gradle. It will enable user management (CRUD operations for users on MongoDB).
 
 ## Getting Started
 To run the Users service locally, follow these steps:
