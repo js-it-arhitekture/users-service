@@ -1,0 +1,25 @@
+# Quarkus
+# Ignore the Quarkus application artifact directory
+target/
+
+# Ignore Quarkus development mode temporary directories
+dev/
+
+# Ignore Quarkus test reports
+reports/
+
+# Ignore Quarkus generated source directories
+src/main/generated/
+src/test/generated/
+
+# Ignore Quarkus configuration files for Visual Studio Code
+.vscode/
+
+# Ignore Quarkus IDE metadata directories
+.metadata/
+.project
+.classpath
+.settings/
+.gradle
+.idea
+.bin
