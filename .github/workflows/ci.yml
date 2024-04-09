@@ -29,11 +29,11 @@ jobs:
         run: ./gradlew test
 
       - name: Login to DockerHub and push image
-          run: |
-            docker login -u $DOCKER_USERNAME --password-stdin <<< $DOCKER_PASSWORD
-            docker build -t $IMAGE_NAME .
-            docker push $IMAGE_NAME
-          env:
-            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-            IMAGE_NAME: jancii/users-service:latest
+        run: |
+          docker login -u $DOCKER_USERNAME --password-stdin <<< $DOCKER_PASSWORD
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_NAME: jancii/users-service:latest
