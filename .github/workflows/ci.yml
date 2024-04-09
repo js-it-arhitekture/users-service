@@ -27,3 +27,13 @@ jobs:
 
       - name: Run tests
         run: ./gradlew test
+
+      - name: Build and Push Docker Image
+        env: 
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_NAME: jancii/users-service:latest
+        run: |
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME
